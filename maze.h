@@ -129,7 +129,7 @@ class maze{
         }
         cout << "+" << endl;
     }
-    void DFS(){
+    bool DFS(){
        for(int i = 0; i < map.size();++i){
 
                for(int j = 0; j < map[i].size() && flag != true;++j){ // FOR NOW FOR NOW FOR NOW FOR NOW FOR NOW I WILL CHANGE IT I WILL CHANGE IT
@@ -145,13 +145,15 @@ class maze{
        while(!dfStack.empty()){
                cell currentCell = dfStack.top();
                dfStack.pop();
-                if(dfStack.top().getname() != end){
-                        
-                        
+                if(dfStack.top().getname() == end){
+                        return true;         
                 }
+                
 
 
        }
+
+       return false;
     }
     private:
     char start;
