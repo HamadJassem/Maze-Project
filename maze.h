@@ -302,7 +302,8 @@ class maze{
        }
        while(!pq.empty()){
 
-                cell* currentcell = pq.top();        
+                cell* currentcell = pq.top();      
+               // currentcell->printcoord();
                 pq.pop();
                 int currentsize = pq.size();
                 
@@ -320,33 +321,37 @@ class maze{
                         currentcell->setvisited(true);
                         if(currentcell->gety()-1 >= 0){//above
                                 if(currentcell->getabove() == true && map[currentcell->gety()-1][currentcell->getx()].getvisited() == false)
-                                 {              
+                                 {       
+                                        map[currentcell->gety()-1][currentcell->getx()].setparent(currentcell);       
                                         pq.push(&map[currentcell->gety()-1][currentcell->getx()]); 
-                                        pq.top()->setparent(currentcell);
+                                        
                                  }
                         }        
                         if(currentcell->gety()+1 < row){//below
                                 if(currentcell->getbelow() == true && map[currentcell->gety()+1][currentcell->getx()].getvisited() == false)
                                         { 
-                        
+                                                map[currentcell->gety()+1][currentcell->getx()].setparent(currentcell);
                                                 pq.push(&map[currentcell->gety()+1][currentcell->getx()]);
-                                                pq.top()->setparent(currentcell);
+                                                
                                                 
                                                 
                                         }
                         }
                         if(currentcell->getx()+1 < col){//right
                                 if(currentcell->getright() == true && map[currentcell->gety()][currentcell->getx()+1].getvisited() == false)
-                                {               
+                                {       
+                                       map[currentcell->gety()][currentcell->getx()+1].setparent(currentcell);        
                                         pq.push(&map[currentcell->gety()][currentcell->getx()+1]); 
-                                        pq.top()->setparent(currentcell);
+                                        
                                 }
                         }
                         if(currentcell->getx()-1 >= 0){//left
                                 if(currentcell->getleft() == true && map[currentcell->gety()][currentcell->getx()-1].getvisited() == false)
                                 {         
+
+                                        map[currentcell->gety()][currentcell->getx()-1].setparent(currentcell);
                                         pq.push(&map[currentcell->gety()][currentcell->getx()-1]);
-                                        pq.top()->setparent(currentcell);
+                                        
                                 }
                         }
                 }

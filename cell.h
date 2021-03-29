@@ -60,7 +60,7 @@ class cell{
     void setright(bool r){right = r;};
     void setabove(bool a){above = a;};
     void setbelow(bool b){below = b;};
-    int getcost(){return cost;}
+    int getcost()const{return cost;}
     char getname(){return name;}
     void setname(char n){name = n;};
     bool getvisited(){return visited;}
@@ -105,7 +105,7 @@ class cell{
 };
 
 struct compareCost { // defining the comparison operator
-  bool operator() (cell* const& cell1, cell* const& cell2) {
-    return cell1->getcost() > cell2->getcost();
+  bool operator() (const cell* cell1, const cell* cell2) {
+    return (cell1->getcost() > cell2->getcost());
   }
 };
