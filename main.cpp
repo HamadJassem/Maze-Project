@@ -14,8 +14,7 @@ cout << "4. Set goal\n";
 cout << "5. Find path with DFS\n";
 cout << "6. Find path with BFS\n";
 cout << "7. Display path with DA\n";
-cout << "8. Display path\n";
-cout << "9. Exit\n";       
+cout << "8. Exit\n";       
 }
 void loadfile(ifstream& in){
     string fil;
@@ -79,10 +78,38 @@ char start, end;
                 break;
         case 5:
                 cout << "searching a path using Depth First Search (DFS)...\n";
-                myMaze.DFS();
+                if(myMaze.DFS())
+                {
+                        cout << "the path has been found!\n";
+                }
+                else{
+                        cout << "no path exsists from beginning to goal!\n";
+                }
                 break;
+        case 6:
+                cout << "searching a path using Breadth First Search (BFS)...\n";
+                if(myMaze.BFS())
+                {
+                        cout << "the path has been found!\n";
+                }
+                else
+                {
+                        cout << "no path exsists from beginning to goal!\n";
+                }
+                break;
+        case 7:
+                cout << "searching a path using dijkstra algorithm (DA)...\n";
+                if(myMaze.DA())
+                {
+                        cout << "the path has been found!\n";
+                }
+                else
+                {
+                        cout << "no path exsists from beginning to goal!\n";
+                }
     }
-    }while(option!=9);
+    }while(option!=8);
     cout << "\n---Thank you and Goodbye---\n";
-    fin.close();
+   
+    fin.close();   
 }
